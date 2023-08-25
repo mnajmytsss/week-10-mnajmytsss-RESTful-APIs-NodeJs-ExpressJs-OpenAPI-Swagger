@@ -13,7 +13,7 @@ async function createTransfer(req, res) {
   });
 
   res.status(200).json({
-    message: 'success',
+    message: 'Transfer success',
     data: transfer,
   });
 }
