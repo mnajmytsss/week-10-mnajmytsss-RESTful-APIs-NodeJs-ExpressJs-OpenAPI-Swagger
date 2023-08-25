@@ -1,18 +1,18 @@
 openapi: 3.0.0
 info:
-  title: 'week-10-mnajmytsss'
+  title: "week-10-mnajmytsss"
   version: 1.0.0
-  description: 'Latihan RBAC dengan token based auth'
+  description: "RESTful API with expressjs, nodejs, and swagger"
 servers:
   - url: http://localhost:3000
-    description: 'Development server'
+    description: "Development server"
 components:
   securitySchemes:
     bearer:
       type: http
       scheme: bearer
       bearerFormat: JWT
-      description: 'Bearer with JWT Token'
+      description: "Bearer with JWT Token"
   schemas:
     RegisterUser:
       type: object
@@ -41,15 +41,15 @@ components:
 paths:
   /auth/register:
     post:
-      summary: 'Register user baru'
+      summary: "Register new user"
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RegisterUser'
+              $ref: "#/components/schemas/RegisterUser"
       responses:
-        '200':
-          description: 'User Created'
+        "200":
+          description: "User Created"
           content:
             application/json:
               schema:
@@ -66,23 +66,23 @@ paths:
                         type: string
                       role:
                         type: string
-        '400':
-          description: 'Bad Request'
+        "400":
+          description: "Bad Request"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BadRequest'
+                $ref: "#/components/schemas/BadRequest"
   /auth/login:
     post:
-      summary: 'Login user'
+      summary: "Login user"
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/LoginUser'
+              $ref: "#/components/schemas/LoginUser"
       responses:
-        '200':
-          description: 'Login Success'
+        "200":
+          description: "Login Success"
           content:
             application/json:
               schema:
@@ -92,20 +92,20 @@ paths:
                     type: string
                   data:
                     type: string
-        '400':
-          description: 'Bad Request'
+        "400":
+          description: "Bad Request"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BadRequest'
+                $ref: "#/components/schemas/BadRequest"
   /v1/transfers:
     post:
       security:
         - bearer: []
-      summary: 'create transfers'
+      summary: "create transfers"
       responses:
-        '200':
-          description: 'create transfers'
+        "200":
+          description: "create transfers"
           content:
             application/json:
               schema:
@@ -132,10 +132,10 @@ paths:
     get:
       security:
         - bearer: []
-      summary: 'Get all transfers'
+      summary: "Get all transfers"
       responses:
-        '200':
-          description: 'Get all transfers'
+        "200":
+          description: "Get all transfers"
           content:
             application/json:
               schema:
@@ -162,10 +162,10 @@ paths:
     patch:
       security:
         - bearer: []
-      summary: 'patch transfers status'
+      summary: "patch transfers status"
       responses:
-        '200':
-          description: 'patch transfers status'
+        "200":
+          description: "patch transfers status"
           content:
             application/json:
               schema:
@@ -180,4 +180,3 @@ paths:
                       properties:
                         status:
                           type: string
-  
