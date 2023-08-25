@@ -1,26 +1,19 @@
+require('dotenv').config();
+
+const OpenApiValidator = require("express-openapi-validator");
+const swaggerUi = require("swagger-ui-express");
+const yaml = require("yaml");
+const fs = require("fs");
+
 const express = require("express");
 const { MongoClient, ObjectId } = require("mongodb");
 const transferRouter = require("./routes/transferRoute.js");
 const authRouter = require("./routes/authRouter.js");
 const authenticationMiddleware = require("./middleware/authenticationMiddleware.js")
-const openApiValidator = require("express-openapi-validator")
-const swaggerUi = require("swagger-ui-express"); 
-const openApiPath = require("./doc/openapi.yaml")
-const file = fs.readFileSync(openApiPath, 'utf8')
-const swaggerDocument = yaml.parse(file)
-const yaml = require("yaml")
-const fs = require("fs")
 
 const app = express();
 
 app.use(express.json());
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-app.use(
-  openApiValidator.middleware({
-    apiSpec: openApiPath,
-    validateRequests: true,
-  })
-); 
 
 app.use(async (req, res, next) => {
   let db;
@@ -43,6 +36,21 @@ app.get("/", (req, res) => {
 
 app.use("/auth", authRouter);
 app.use("/v1/transfers", authenticationMiddleware, transferRouter);
+
+// API Documentation
+const openApiPath = "openapi.yaml";
+const readApiFile = fs.readFileSync(openApiPath, "utf8");
+const swaggerDocs = yaml.parse(readApiFile); 
+
+// App Router
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+// app.use(
+//   openApiValidator.middleware({
+//     apiSpec: openApiPath,
+//     validateRequests: true,
+//   })
+// ); 
+
 
 const port = 3000;
 
