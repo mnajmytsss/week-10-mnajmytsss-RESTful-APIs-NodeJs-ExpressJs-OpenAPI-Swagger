@@ -16,7 +16,7 @@ transfersRouter.use((req, res, next) => {
 transfersRouter.post("/", authorizationMiddlewareAll, transfersController.createTransfer);
 
 // GET All Transfers
-transfersRouter.get("/", authorizationMiddlewareAll, transfersController.getAllTransfers);
+transfersRouter.get("/s", authorizationMiddlewareAll, transfersController.getAllTransfers);
 
 // PUT Transfer
 transfersRouter.put("/:id", transfersController.updateTransfer);
