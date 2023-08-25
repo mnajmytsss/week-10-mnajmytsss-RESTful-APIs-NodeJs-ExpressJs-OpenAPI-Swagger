@@ -1,5 +1,6 @@
 const { ObjectId } = require('mongodb');
 
+
 async function createTransfer(req, res) {
   const { amount, currency, sourceAccount, destinationAccount } = req.body;
 
@@ -54,8 +55,9 @@ async function updateTransfer(req, res) {
 async function updateTransferStatus(req, res) {
   const id = req.params.id;
   const { status } = req.body;
-
-  const transfer = await req.db.collection('transfers').updateOne(
+  
+  try {  
+    const transfer = await req.db.collection('transfers').updateOne(
     { _id: new ObjectId(id) },
     {
       $set: {
@@ -68,6 +70,13 @@ async function updateTransferStatus(req, res) {
     message: 'updated',
     data: transfer,
   });
+    
+  } catch (error) {
+    res.status(500).json({
+      message: 'failed',
+      data: error,
+    });
+  }
 }
 
 async function deleteTransfer(req, res) {
