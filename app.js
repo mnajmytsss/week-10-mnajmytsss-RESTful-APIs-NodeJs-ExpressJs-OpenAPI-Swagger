@@ -21,7 +21,7 @@ app.use(async (req, res, next) => {
   let db;
   try {
     const client = await new MongoClient(
-      "mongodb+srv://najmy:Smandak12@cluster0.xxlfbbe.mongodb.net/?retryWrites=true&w=majority").connect();
+      "mongodb+srv://najmy:Smandak12@cluster0.xxlfbbe.mongodb.net").connect();
     db = client.db("Revou");
   } catch (error) {
     console.log(error, "<=================== error ==================");
