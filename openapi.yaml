@@ -3,7 +3,7 @@ info:
   title: week-10-mnajmytsss
   version: 1.0.0
 servers:
-  - url: http://localhost:3000/
+  - url: https://encouraging-gilet-dove.cyclic.cloud/
     description: 'Development server'
 components:
   securitySchemes:

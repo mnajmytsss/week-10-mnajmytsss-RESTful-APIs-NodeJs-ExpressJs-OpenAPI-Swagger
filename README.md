@@ -16,42 +16,42 @@ The Financial Tracking API adheres to the principles of RESTful design to ensure
 
 ## Endpoints and Examples
 
-[Copy me](http://localhost:3000)
+[Copy me](https://encouraging-gilet-dove.cyclic.cloud/)
 
 ### HTTP Methods
 
 **Register New User**
 
 ```http
-POST | https://localhost:3000/auth/register
+POST | https://encouraging-gilet-dove.cyclic.cloud/auth/register
 ```
 
 **Log In**
 
 ```http
-POST | https://localhost:3000/auth/register
+POST | https://encouraging-gilet-dove.cyclic.cloud/auth/register
 ```
 
 **Post Transfer**
 
 ```http
-POST | https://localhost:3000/v1/transfers
+POST | https://encouraging-gilet-dove.cyclic.cloud/v1/transfers
 
 
 **Get All Transfer**
 
 ```http
-POST | https://localhost:3000/v1/transfers/s
+POST | https://encouraging-gilet-dove.cyclic.cloud/v1/transfers/s
 ```
 
 **Patching Transfer Status**
 
 ```http
-PATCH | https://localhost:3000/v1/transfers/:id
+PATCH | https://encouraging-gilet-dove.cyclic.cloud/v1/transfers/:id
 ```
 
 **Delete Transfer by ID**
 
 ```http
-DELETE | https://localhost:3000/v1/transfers/:id
+DELETE | https://encouraging-gilet-dove.cyclic.cloud/v1/transfers/:id
 ```
