@@ -4,6 +4,7 @@ const openApiValidator = require("express-openapi-validator");
 const swaggerUi = require("swagger-ui-express");
 const yaml = require("yaml");
 const fs = require("fs");
+const cors = require("cors")
 
 const express = require("express");
 const { MongoClient, ObjectId } = require("mongodb");
@@ -13,12 +14,14 @@ const authenticationMiddleware = require("./middleware/authenticationMiddleware.
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 app.use(async (req, res, next) => {
   let db;
   try {
-    const client = await new MongoClient("mongodb://localhost:27017").connect();
+    const client = await new MongoClient(
+      "mongodb+srv://najmy:Smandak12@cluster0.xxlfbbe.mongodb.net/?retryWrites=true&w=majority").connect();
     db = client.db("Revou");
   } catch (error) {
     console.log(error, "<=================== error ==================");
