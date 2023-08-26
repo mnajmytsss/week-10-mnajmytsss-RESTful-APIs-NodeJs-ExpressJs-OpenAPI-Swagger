@@ -16,36 +16,42 @@ The Financial Tracking API adheres to the principles of RESTful design to ensure
 
 ## Endpoints and Examples
 
-[Copy me on postman](https://mnajmytsss.onrender.com)
+[Copy me](http://localhost:3000)
 
 ### HTTP Methods
 
 **Register New User**
 
 ```http
-POST | https://mnajmytsss.onrender.com/user
+POST | https://localhost:3000/auth/register
 ```
 
 **Log In**
 
 ```http
-POST | https://mnajmytsss.onrender.com/user/:id
+POST | https://localhost:3000/auth/register
 ```
+
+**Post Transfer**
+
+```http
+POST | https://localhost:3000/v1/transfers
+
 
 **Get All Transfer**
 
 ```http
-POST | https://mnajmytsss.onrender.com/transaction
+POST | https://localhost:3000/v1/transfers/s
 ```
 
 **Patching Transfer Status**
 
 ```http
-PATCH | https://mnajmytsss.onrender.com/transaction/:id
+PATCH | https://localhost:3000/v1/transfers/:id
 ```
 
 **Delete Transfer by ID**
 
 ```http
-DELETE | https://mnajmytsss.onrender.com/transaction/:id
+DELETE | https://localhost:3000/v1/transfers/:id
 ```
