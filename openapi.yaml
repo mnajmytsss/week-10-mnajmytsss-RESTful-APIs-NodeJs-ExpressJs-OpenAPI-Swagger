@@ -128,7 +128,12 @@ paths:
                           type: string
                         status:
                           type: string
-  /s/v1/transfers:
+                required:
+                  - amount
+                  - currency
+                  - sourceAccount
+                  - destinationAccount
+  /v1/transfers/s:
     get:
       security:
         - bearer: []
