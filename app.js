@@ -37,8 +37,6 @@ app.get("/", (req, res) => {
   res.send("My App");
 });
 
-app.use("/auth", authRouter);
-app.use("/v1/transfers", authenticationMiddleware, transferRouter);
 
 // API Documentation
 const openApiPath = "openapi.yaml";
@@ -54,6 +52,8 @@ app.use(
   })
 ); 
 
+app.use("/auth", authRouter);
+app.use("/v1/transfers", authenticationMiddleware, transferRouter);
 
 const port = 3000;
 
