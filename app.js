@@ -12,6 +12,11 @@ const transferRouter = require("./routes/transferRoute.js");
 const authRouter = require("./routes/authRouter.js");
 const authenticationMiddleware = require("./middleware/authenticationMiddleware.js")
 
+// API Documentation
+const openApiPath = "openapi.yaml";
+const readApiFile = fs.readFileSync(openApiPath, "utf8");
+const swaggerDocs = yaml.parse(readApiFile); 
+
 const app = express();
 
 app.use(cors());
@@ -37,11 +42,10 @@ app.get("/", (req, res) => {
   res.send("My App");
 });
 
+app.use("/auth", authRouter);
+app.use("/v1/transfers", authenticationMiddleware, transferRouter);
 
-// API Documentation
-const openApiPath = "openapi.yaml";
-const readApiFile = fs.readFileSync(openApiPath, "utf8");
-const swaggerDocs = yaml.parse(readApiFile); 
+
 
 // App Router
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
@@ -52,8 +56,6 @@ app.use(
   })
 ); 
 
-app.use("/auth", authRouter);
-app.use("/v1/transfers", authenticationMiddleware, transferRouter);
 
 const port = 3000;
 
