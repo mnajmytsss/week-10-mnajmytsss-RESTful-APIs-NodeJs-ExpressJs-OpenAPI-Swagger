@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const OpenApiValidator = require("express-openapi-validator");
+const openApiValidator = require("express-openapi-validator");
 const swaggerUi = require("swagger-ui-express");
 const yaml = require("yaml");
 const fs = require("fs");
@@ -44,12 +44,12 @@ const swaggerDocs = yaml.parse(readApiFile);
 
 // App Router
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
-// app.use(
-//   openApiValidator.middleware({
-//     apiSpec: openApiPath,
-//     validateRequests: true,
-//   })
-// ); 
+app.use(
+  openApiValidator.middleware({
+    apiSpec: openApiPath,
+    validateRequests: true,
+  })
+); 
 
 
 const port = 3000;
